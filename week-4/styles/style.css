@@ -1,0 +1,93 @@
+body {
+    font-family: "Lato", sans-serif;
+    color: #5A6275;
+}
+.col-9 {
+    position: relative;
+    margin-top: 30px;
+    /* background-color:lightblue; */
+    width: 1200px;
+    border: 2px solid #D9EDFD;
+    border-radius: 2px;
+    
+}
+.title {
+    margin-left: 30px;
+    margin-bottom: 10px;
+    padding-top: 30px;
+    padding-left: 40px;
+
+    font-weight: 700;
+    font-size: 42px;  
+}
+.today {
+    margin-left: 30px;
+    font-size: 28px;
+}
+.temperature {
+    margin-left: 30px;
+    margin-right: 8px;
+
+    font-weight: 700;
+    font-size: 42px;
+}
+.until {
+    text-decoration: none;
+    vertical-align: super;
+    font-size: 24px;
+    font-weight: 400;
+}
+.temperature__tageline {
+    vertical-align: super;
+    font-size: 24px;
+    font-weight: 400;
+}
+.wheather {
+    margin-left: 8px;
+
+    font-weight: 400;
+    font-size: 24px;
+}
+.form {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}
+.input {
+    border: 1px solid #4EAE53;
+    background-color: #4EAE53;
+    color: #fff;
+}
+.city {
+    position: absolute;
+    top: 68px;
+    right: 154px;
+}
+.kind-city {
+    text-decoration: none;
+}
+/* colums */
+.list {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    padding-left: 0;
+    width: 1200px;
+
+    list-style: none;
+    text-align: center;
+    /* border: 2px solid #D9EDFD; */
+
+}
+.list-day {
+    padding: 8px 10px;
+    border: 2px solid #D9EDFD;
+    width: 240px;
+   
+}
+p {
+    margin-top: 16px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
