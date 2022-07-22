@@ -63,14 +63,16 @@ farengate.addEventListener("click", temperatureFarengate);
 console.log(temperatureFarengate);
 
 // change City
-function search(event) {
+function changeCity(event) {
     event.preventDefault();
     let searchInput = document.querySelector("#search-text-input");
-
-    let city = document.querySelector("#title");
-        city.innerHTML = `${searchInput.value}`;
+  let city = document.querySelector("#title");
+  if (searchInput.value) {
+    city.innerHTML = `${searchInput.value}`;
+  } else {
+    city.innerHTML = null;
+    alert(`Please, type a city`);
+  }
 }
-
-let form = document.querySelector("#seach-form");
-form.addEventListener("submit", search);
-console.log(search);
+let myCity = document.querySelector("#seach-form");
+myCity.addEventListener("submit", changeCity);
