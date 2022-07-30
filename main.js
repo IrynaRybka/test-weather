@@ -63,53 +63,77 @@ farengate.addEventListener("click", temperatureFarengate);
 console.log(temperatureFarengate);
 
 // change City
+// function changeCity(event) {
+//     event.preventDefault();
+//     let searchInput = document.querySelector("#search-text-input");
+//   let city = document.querySelector("#title");
+//   if (searchInput.value) {
+//     city.innerHTML = `${searchInput.value}`;
+//   } else {
+//     city.innerHTML = null;
+//     alert(`Please, type a city`);
+//   }
+// }
+
+// let myCity = document.querySelector("#search-form");
+// myCity.addEventListener("submit", changeCity);
+
+
+// current weather in other cities
+function displayWeather(response) {
+  document.querySelector("#title").innerHTML = response.data.name;
+  document.querySelector("#number-temperature").innerHTML = Math.round(response.data.main.temp);
+  document.querySelector("#forecoast").innerHTML = response.data.weather[0].main;
+}
+
+function searchCity(city) {
+  let apiKey = "ec73684ab43da8e0668f04ae9704e6d3";
+  let apiUrl = "https://api.openweathermap.org/data/2.5/weather?q="
+    .concat(city, "&appid=")
+    .concat(apiKey, "&units=metric");
+  
+  axios.get(apiUrl).then(displayWeather);
+}
+
 function changeCity(event) {
-    event.preventDefault();
-    let searchInput = document.querySelector("#search-text-input");
-  let city = document.querySelector("#title");
-  if (searchInput.value) {
-    city.innerHTML = `${searchInput.value}`;
-  } else {
-    city.innerHTML = null;
-    alert(`Please, type a city`);
-  }
+  event.preventDefault();
+  let city = document.querySelector("#search-text-input").value;
+  searchCity(city);
 }
-let myCity = document.querySelector("#search-form");
-myCity.addEventListener("submit", changeCity);
-
-// current weather in a submit city
-let apiKey = "ec73684ab43da8e0668f04ae9704e6d3";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-
-function showTemperature(response) {
-  let temperature = Math.round(response.main.data.temp);
-  let temperatureElement = document.querySelector("#number-temperature");
-  let description = document.querySelector("#forecoast");
-
-  temperatureElement.innerHTML = `${temperature}`;
-  description.innerHTML = response.data.weather[0].description;
-}
-
-axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemperature);
-changeCity(showTemperature);
-
 // current position
-function currentTemperature(response) {
+function showWeather(response) {
   let h1 = document.querySelector("h1");
   let temperature = Math.round(response.data.main.temp);
   h1.innerHTML = `${response.data.name}`;
-  let description = document.querySelector("#number-temperature");
-  description.innerHTML = `${temperature}`;
+
+  let temperatureElement = document.querySelector("#number-temperature");
+  temperatureElement.innerHTML = `${temperature}`;
+
+  let description = document.querySelector("#forecoast");
+  description.innerHTML = `${response.data.weather[0].main}`;
 }
+
 function retrievePosition(position) {
   let apiKey = "ec73684ab43da8e0668f04ae9704e6d3";
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
   let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+
   axios.get(url).then(showWeather);
+  
+}
+function getCurrentWeather() {
+  navigator.geolocation.getCurrentPosition(retrievePosition);
 }
 
-navigator.geolocation.getCurrentPosition(currentTemperature&&retrievePosition);
-
 let button = document.querySelector("#current-btn");
-button.addEventListener("click", getCurrentPosition);
+button.addEventListener("click", getCurrentWeather);
+
+let searchForm = document.querySelector("#search-form");
+searchForm.addEventListener("submit", changeCity);
+
+// navigator.geolocation.getCurrentPosition(retrievePosition);
+
+
+
+
