@@ -62,21 +62,7 @@ let farengate = document.querySelector("#farengate");
 farengate.addEventListener("click", temperatureFarengate);
 console.log(temperatureFarengate);
 
-// change City
-// function changeCity(event) {
-//     event.preventDefault();
-//     let searchInput = document.querySelector("#search-text-input");
-//   let city = document.querySelector("#title");
-//   if (searchInput.value) {
-//     city.innerHTML = `${searchInput.value}`;
-//   } else {
-//     city.innerHTML = null;
-//     alert(`Please, type a city`);
-//   }
-// }
 
-// let myCity = document.querySelector("#search-form");
-// myCity.addEventListener("submit", changeCity);
 
 
 // current weather in other cities
