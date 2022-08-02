@@ -86,6 +86,7 @@ function changeCity(event) {
   let city = document.querySelector("#search-text-input").value;
   searchCity(city);
 }
+// weather in New York, London, Sydney 
 // current position
 function showWeather(response) {
   let h1 = document.querySelector("h1");
@@ -111,6 +112,27 @@ function retrievePosition(position) {
 function getCurrentWeather() {
   navigator.geolocation.getCurrentPosition(retrievePosition);
 }
+function londonPosition(response) {
+  let city = "London";
+  let apiKey = "ec73684ab43da8e0668f04ae9704e6d3";
+  let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+  axios.get(url).then(showWeather);
+}
+function sydneyPosition(response) {
+  let city = "Sydney";
+  let apiKey = "ec73684ab43da8e0668f04ae9704e6d3";
+  let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+  axios.get(url).then(showWeather);
+}
+function newYorkPosition(response) {
+  let city = "New York";
+  let apiKey = "ec73684ab43da8e0668f04ae9704e6d3";
+  let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+  axios.get(url).then(showWeather);
+}
 
 let button = document.querySelector("#current-btn");
 button.addEventListener("click", getCurrentWeather);
@@ -118,6 +140,14 @@ button.addEventListener("click", getCurrentWeather);
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", changeCity);
 
+let btnLondon = document.querySelector("#london-btn");
+btnLondon.addEventListener("click", londonPosition);
+
+let btnSydney = document.querySelector("#sydney-btn");
+btnSydney.addEventListener("click", sydneyPosition);
+
+let btnNewYork = document.querySelector("#york-btn");
+btnNewYork.addEventListener("click", newYorkPosition);
 // navigator.geolocation.getCurrentPosition(retrievePosition);
 
 

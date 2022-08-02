@@ -140,13 +140,13 @@ body {
     background-image: linear-gradient(to top left,
                 #fff, #eee);
     border-radius: 4px;
-    box-shadow: 2px 1px 10px rgb(137, 143, 135);
-    
-    
-   
+    box-shadow: 2px 1px 10px rgb(137, 143, 135);  
 }
 .week-day {
-    margin-top: 16px;
+    margin-top: 4px;
     padding-left: 20px;
     padding-right: 40px;
+}
+.temperature-day {
+    font-size: 24px;
 }
